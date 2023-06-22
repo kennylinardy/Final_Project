@@ -5,21 +5,8 @@ import logo from '../assets/logo.png';
 import { Button } from 'primereact/button';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaArrowLeft } from 'react-icons/fa';
-import './Navbar.css';
-// import {
-//   CurrencyDollarIcon,
-//   HeartIcon,
-//   CubeIcon,
-//   ChevronRightIcon,
-// } from "@heroicons/react/24/outline";
-// import {
-//   Card,
-//   Typography,
-//   List,
-//   ListItem,
-//   ListItemSuffix,
-//   ListItemPrefix,
-// } from "@material-tailwind/react";
+import emptyImage from '../assets/empty.png';
+import './Index.css';
 
 const PencarianEmpty = () => {
   return (
@@ -29,7 +16,6 @@ const PencarianEmpty = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-10">
-
                 {/* Logo and Search Bar */}
                 <img src={logo} alt="Logo" className="h-14" />
                 <div className="relative">
@@ -45,7 +31,6 @@ const PencarianEmpty = () => {
               </div>
               {/* End of Logo and Search Bar */}
 
-
               {/* Button */}
               <div className="flex flex-col md:flex-row md:items-center">
                 <Button
@@ -59,7 +44,6 @@ const PencarianEmpty = () => {
                 </Button>
               </div>
               {/* End of Button */}
-
             </div>
           </div>
           <hr />
@@ -119,53 +103,21 @@ const PencarianEmpty = () => {
               </ul>
             </div>
             <div className="py-1"></div>
-            <hr />
           </div>
           {/* End of Tag Hari */}
-
-          <div className="flex flex-col md:flex-row">
-            {/* Sidebar */}
-            {/* <div className="w-1/4">
-              <Card className="h-auto w-auto max-w-full p-4 shadow-xl shadow-gray-900/2 border-gray-950">
-                <div className="mb-2 p-4">
-                  <Typography variant="h6" color="blue-gray">
-                    Filter
-                  </Typography>
-                </div>
-                <List>
-                  <ListItem>
-                    <ListItemPrefix>
-                      <CubeIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    Transit
-                    <ChevronRightIcon className="icon-black h-5 w-5 ml-auto" />
-                  </ListItem>
-                  <hr className="border-t border-gray-300" />
-                  <ListItem>
-                    <ListItemPrefix>
-                      <HeartIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    Fasilitas
-                    <ListItemSuffix>
-                      <ChevronRightIcon className="icon-black h-5 w-5 ml-auto" />
-                    </ListItemSuffix>
-                  </ListItem>
-                  <hr className="border-t border-gray-300" />
-                  <ListItem>
-                    <ListItemPrefix>
-                      <CurrencyDollarIcon className="h-5 w-5" />
-                    </ListItemPrefix>
-                    Harga
-                    <ListItemSuffix>
-                      <ChevronRightIcon className="icon-black h-5 w-5 ml-auto" />
-                    </ListItemSuffix>
-                  </ListItem>
-                </List>
-              </Card>
-            </div> */}
-            {/* End of Sidebar */}
-          </div>
         </div>
+
+        <hr />
+
+        {/* Start of Tiket Habis! */}
+        <div className="flex flex-col justify-center items-center pt-40">
+          <img src={emptyImage} alt="Empty" className="mx-auto" style={{ width: '15%', height: 'auto' }} />
+        </div>
+        <div className="flex flex-col justify-center items-center pt-5">
+          <p className="font-bold">Maaf, Tiket terjual habis!</p>
+          <p className="font-bold color-custom">Coba cari perjalanan lainnya!</p>
+        </div>
+        {/* End of Tiket Habis! */}
       </div>
     </div>
   );

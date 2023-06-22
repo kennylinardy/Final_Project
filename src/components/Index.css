@@ -14,6 +14,18 @@
   background-color: #73CA5C;
 }
 
+.custom-border-termurah {
+  border-color: #A06ECE;
+}
+
+.custom-text-termurah {
+  color: #A06ECE;
+}
+
+.color-custom {
+  color: #7126B5;
+}
+
 .tag {
   border-radius: 0.5rem; /* Rounded corners */
   padding: 0.5rem 1rem; /* Top/bottom padding of 0.5rem and left/right padding of 1rem */
@@ -30,6 +42,9 @@ li:hover {
   color: white; 
   border: 1px solid #A06ECE;
 }
+
+
+
 
 hr {
   box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.5);

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState , useRef , useEffect} from "react";
+import axios from 'axios';
 import 'primereact/resources/primereact.min.css';
 import { RiLoginBoxLine } from "react-icons/ri";
 import logo from '../assets/logo.png';
@@ -10,7 +11,9 @@ import chevron from '../assets/chevron.png'
 import arrow from '../assets/arrow.png'
 import koper from '../assets/koper.png'
 import panahtermurah from '../assets/panahtermurah.png'
+import { DataView } from 'primereact/dataview';
 import Modal from "../components/Modal";
+// import { Card } from 'primereact/card';
 import './Index.css';
 import {
   CurrencyDollarIcon,
@@ -26,11 +29,69 @@ import {
   ListItemSuffix,
   ListItemPrefix,
 } from "@material-tailwind/react";
-import { useState } from "react";
 
 const HasilPencarian = () => {
+
+  const [data, setData] = useState([]);
+    useEffect(() => {
+        getData()
+    }, []);
+
+  const getData = async () => {
+    await axios.get('https://be-tiketku-production.up.railway.app/api/v1/flight', {
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ6b2RwbHVnaW5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjg3NDQ3MTg2fQ.lLzO0u8BQF2WpwWDQiuQ7qGEBN-ak1mG-xQtMwUcCkk`
+              }
+          })
+          .then(response => {
+            console.log(response?.data?.data);
+              setData(response?.data?.data);
+          })
+      }
   const [showMyModal, setShowMyModal] = useState(false)
 
+  const itemtemplate = (dataTemplate) => {
+    console.log(dataTemplate);
+    return <><div className="ml-5 flex flex-col border-solid border-2 rounded-lg p-3">
+    <div className="flex justify-between">
+      <div className="flex">
+        <img src={yellowlogo} alt="" className="w-6 h-6 mr-2" />
+        <div>{dataTemplate.airline}</div>
+      </div>
+      <div>
+        <img src={chevron} alt="" className="w-4 h-4" />
+      </div>
+    </div>
+    <div className="flex justify-between">
+      <div className="flex p-3 w-1/2 justify-between">
+        <div className="flex flex-col justify-between">
+          <div className="font-bold">{dataTemplate.arrival_date.slice(14, 19)}</div>
+          <div>{dataTemplate.destination.code}</div>
+        </div>
+        <div className="flex flex-col justify-between">
+          <div>4h 0m</div>
+          <img src={arrow} alt=""/>
+          <div>direct</div>
+        </div>
+      <div className="flex flex-col justify-between">
+        <div className="font-bold">{dataTemplate.departure_date.slice(14, 19)}</div>
+        <div>{dataTemplate.source.code}</div>
+      </div>
+    </div>
+      <div className="flex items-center">
+        <img src={koper} alt="" className="w-6 h-6" />
+      </div>
+      <div className="flex p-3">
+        <div className="flex flex-col justify-between">
+          <div>{dataTemplate.economy_class_price}</div>
+          <button className="border-solid border-2 rounded-lg">
+            <div>Pilih</div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div></>
+  }
   const handleOnClose = () => setShowMyModal(false )
   return (
     <div>
@@ -91,38 +152,38 @@ const HasilPencarian = () => {
             {/* Tag Hari */}
             <div className="flex justify-center">
               <ul className="flex w-full">
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                <Card className="flex-1 flex flex-col items-center list-item text-sm text-center">
                   <div className="font-extrabold">SENIN</div>
                   <div>01/03/2023</div>
-                </li>
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                </Card >
+                <Card  className="flex-1 flex flex-col items-center list-item text-sm text-center">
                   <div className="font-extrabold">SELASA</div>
                   <div>02/03/2023</div>
-                </li>
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                </Card >
+                <Card  className="flex-1 flex flex-col items-center list-item text-sm text-center">
                   <div className="font-extrabold">RABU</div>
                   <div>03/03/2023</div>
-                </li>
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                </Card >
+                <Card  className="flex-1 flex flex-col items-center list-item text-sm text-center">
                   <div className="font-extrabold">KAMIS</div>
                   <div>04/03/2023</div>
-                </li>
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                </Card >
+                <Card  className="flex-1 flex flex-col items-center list-item text-sm text-center">
                   <div className="font-extrabold">JUMAT</div>
                   <div>05/03/2023</div>
-                </li>
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                </Card >
+                <Card className="flex-1 flex flex-col items-center Card -item text-sm text-center">
                   <div className="font-extrabold">SABTU</div>
                   <div>06/03/2023</div>
-                </li>
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                </Card>
+                <Card className="flex-1 flex flex-col items-center Card -item text-sm text-center">
                   <div className="font-extrabold">MINGGU</div>
                   <div>07/03/2023</div>
-                </li>
-                <li className="flex-1 flex flex-col items-center list-item text-sm text-center">
+                </Card>
+                <Card className="flex-1 flex flex-col items-center Card -item text-sm text-center">
                   <div className="font-extrabold">SENIN</div>
                   <div>07/03/2023</div>
-                </li>
+                </Card>
               </ul>
             </div>
             <div className="py-1"></div>
@@ -189,166 +250,8 @@ const HasilPencarian = () => {
                 {/* Start of Cards */}
                 <div className="flex flex-col w-full">
                   {/* card 1 */}
-                  <div className="ml-5 flex flex-col border-solid border-2 rounded-lg p-3">
-                    <div className="flex justify-between">
-                      <div className="flex">
-                        <img src={yellowlogo} alt="" className="w-6 h-6 mr-2" />
-                        <div>Jet Air - Economy</div>
-                      </div>
-                      <div>
-                        <img src={chevron} alt="" className="w-4 h-4" />
-                      </div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div className="flex p-3 w-1/2 justify-between">
-                        <div className="flex flex-col justify-between">
-                          <div className="font-bold">07:00</div>
-                          <div>JKT</div>
-                        </div>
-                        <div className="flex flex-col justify-between">
-                          <div>4h 0m</div>
-                          <img src={arrow} alt=""/>
-                          <div>direct</div>
-                        </div>
-                      <div className="flex flex-col justify-between">
-                        <div className="font-bold">11:00</div>
-                        <div>MLB</div>
-                      </div>
-                    </div>
-                      <div className="flex items-center">
-                        <img src={koper} alt="" className="w-6 h-6" />
-                      </div>
-                      <div className="flex p-3">
-                        <div className="flex flex-col justify-between">
-                          <div>IDR 4.950.000</div>
-                          <button className="border-solid border-2 rounded-lg">
-                            <div>Pilih</div>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* card 2 */}
-                  <div className="ml-5 flex flex-col border-solid border-2 rounded-lg p-3">
-                    <div className="flex justify-between">
-                      <div className="flex">
-                        <img src={yellowlogo} alt="" className="w-6 h-6 mr-2" />
-                        <div>Jet Air - Economy</div>
-                      </div>
-                      <div>
-                        <img src={chevron} alt="" className="w-4 h-4" />
-                      </div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div className="flex p-3 w-1/2 justify-between">
-                        <div className="flex flex-col justify-between">
-                          <div className="font-bold">07:00</div>
-                          <div>JKT</div>
-                        </div>
-                        <div className="flex flex-col justify-between">
-                          <div>4h 0m</div>
-                          <img src={arrow} alt=""/>
-                          <div>direct</div>
-                        </div>
-                      <div className="flex flex-col justify-between">
-                        <div className="font-bold">11:00</div>
-                        <div>MLB</div>
-                      </div>
-                    </div>
-                      <div className="flex items-center">
-                        <img src={koper} alt="" className="w-6 h-6" />
-                      </div>
-                      <div className="flex p-3">
-                        <div className="flex flex-col justify-between">
-                          <div>IDR 4.950.000</div>
-                          <button className="border-solid border-2 rounded-lg">
-                            <div>Pilih</div>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* card 3 */}
-                  <div className="ml-5 flex flex-col border-solid border-2 rounded-lg p-3">
-                    <div className="flex justify-between">
-                      <div className="flex">
-                        <img src={yellowlogo} alt="" className="w-6 h-6 mr-2" />
-                        <div>Jet Air - Economy</div>
-                      </div>
-                      <div>
-                        <img src={chevron} alt="" className="w-4 h-4" />
-                      </div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div className="flex p-3 w-1/2 justify-between">
-                        <div className="flex flex-col justify-between">
-                          <div className="font-bold">07:00</div>
-                          <div>JKT</div>
-                        </div>
-                        <div className="flex flex-col justify-between">
-                          <div>4h 0m</div>
-                          <img src={arrow} alt=""/>
-                          <div>direct</div>
-                        </div>
-                      <div className="flex flex-col justify-between">
-                        <div className="font-bold">11:00</div>
-                        <div>MLB</div>
-                      </div>
-                    </div>
-                      <div className="flex items-center">
-                        <img src={koper} alt="" className="w-6 h-6" />
-                      </div>
-                      <div className="flex p-3">
-                        <div className="flex flex-col justify-between">
-                          <div>IDR 4.950.000</div>
-                          <button className="border-solid border-2 rounded-lg">
-                            <div>Pilih</div>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* card 4 */}
-                  <div className="ml-5 flex flex-col border-solid border-2 rounded-lg p-3">
-                    <div className="flex justify-between">
-                      <div className="flex">
-                        <img src={yellowlogo} alt="" className="w-6 h-6 mr-2" />
-                        <div>Jet Air - Economy</div>
-                      </div>
-                      <div>
-                        <img src={chevron} alt="" className="w-4 h-4" />
-                      </div>
-                    </div>
-                    <div className="flex justify-between">
-                      <div className="flex p-3 w-1/2 justify-between">
-                        <div className="flex flex-col justify-between">
-                          <div className="font-bold">07:00</div>
-                          <div>JKT</div>
-                        </div>
-                        <div className="flex flex-col justify-between">
-                          <div>4h 0m</div>
-                          <img src={arrow} alt=""/>
-                          <div>direct</div>
-                        </div>
-                      <div className="flex flex-col justify-between">
-                        <div className="font-bold">11:00</div>
-                        <div>MLB</div>
-                      </div>
-                    </div>
-                      <div className="flex items-center">
-                        <img src={koper} alt="" className="w-6 h-6" />
-                      </div>
-                      <div className="flex p-3">
-                        <div className="flex flex-col justify-between">
-                          <div>IDR 4.950.000</div>
-                          <button className="border-solid border-2 rounded-lg">
-                            <div>Pilih</div>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* End of Card 4 */}
+                <DataView value={data} itemTemplate={itemtemplate} className="card ps-4 lg:col-12"/>
+                  
               </div>
             </div>
         </div>

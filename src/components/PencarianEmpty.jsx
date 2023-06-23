@@ -27,7 +27,7 @@ const PencarianEmpty = () => {
   return (
     <div>
       <div>
-        <nav className="py-3 navbar-container">
+        <nav className="py-2 navbar-container">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-10">
@@ -61,8 +61,9 @@ const PencarianEmpty = () => {
               {/* End of Button */}
             </div>
           </div>
-          <hr />
         </nav>
+
+        <hr />
 
         <div className="flex flex-col justify-center items-left mx-60 py-5">
           {/* Pilih Penerbangan */}

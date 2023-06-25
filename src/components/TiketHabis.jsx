@@ -46,9 +46,10 @@ const PencarianEmpty = () => {
               {/* End of Button */}
             </div>
           </div>
-          <hr />
         </nav>
-
+        
+        <hr />
+        
         <div className="flex flex-col justify-center items-left mx-60 py-5">
           {/* Pilih Penerbangan */}
           <div>

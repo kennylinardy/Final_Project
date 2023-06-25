@@ -68,8 +68,8 @@ const HasilPencarian = () => {
           <div className="font-bold">{dataTemplate.arrival_date.slice(14, 19)}</div>
           <div>{dataTemplate.destination.code}</div>
         </div>
-        <div className="flex flex-col justify-between">
-          <div>4h 0m</div>
+        <div className="flex flex-col justify-between items-center">
+          <div className="">4h 0m</div>
           <img src={arrow} alt=""/>
           <div>direct</div>
         </div>
@@ -82,8 +82,8 @@ const HasilPencarian = () => {
         <img src={koper} alt="" className="w-6 h-6" />
       </div>
       <div className="flex p-3">
-        <div className="flex flex-col justify-between">
-          <div>{dataTemplate.economy_class_price}</div>
+        <div className="flex flex-col justify-between font-bold">
+          <div>IDR {dataTemplate.economy_class_price}</div>
           <button className="border-solid border-2 rounded-lg">
             <div>Pilih</div>
           </button>
@@ -93,6 +93,10 @@ const HasilPencarian = () => {
   </div></>
   }
   const handleOnClose = () => setShowMyModal(false )
+
+
+  // JSX
+
   return (
     <div>
       <div>
@@ -130,8 +134,9 @@ const HasilPencarian = () => {
               {/* End of Button */}
             </div>
           </div>
-          <hr />
         </nav>
+
+        <hr />
 
         <div className="flex flex-col justify-center items-left mx-60 py-5">
           {/* Pilih Penerbangan */}
